@@ -1,0 +1,17 @@
+import requests
+
+# URL del archivo CSV en Google Drive (asegúrate de que sea público o tengas acceso)
+url = "<URL>"
+
+# Nombre de archivo de destino
+archivo_destino = "basedatos.csv"
+
+response = requests.get(url)
+
+if response.status_code == 200:
+    # Guardar el contenido del archivo en un archivo local
+    with open(archivo_destino, "wb") as archivo:
+        archivo.write(response.content)
+    print(f"El archivo {archivo_destino} se ha descargado exitosamente.")
+else:
+    print(f"No se pudo descargar el archivo. Código de estado: {response.status_code}")
